@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I. MỞ BÀI - SƯỜN BÀI 13</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Nền hiệu ứng sao vũ trụ */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #a5b4fc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #c084fc, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 180px 220px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 250px 120px, #38bdf8, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 320px 280px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 350px 350px;
+            opacity: 0.65;
+            z-index: 0;
+        }
+
+        /* Quầng sáng tinh vân (Nebula background effect) */
+        .nebula {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, rgba(59, 130, 246, 0.12) 40%, rgba(0, 0, 0, 0) 70%);
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Khung kính mờ Glassmorphism */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(168, 85, 247, 0.15);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #c084fc;
+            text-align: center;
+            margin-bottom: 32px;
+            text-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+            border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+            padding-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #cbd5e1;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            line-height: 1.7;
+            margin-bottom: 12px;
+            color: #cbd5e1;
+            text-align: justify;
+        }
+
+        li strong {
+            color: #38bdf8;
+        }
+
+        /* Khung thơ Kệ "Mộng" */
+        .poem-box {
+            background: rgba(30, 41, 59, 0.6);
+            border-left: 4px solid #c084fc;
+            border-right: 1px solid rgba(192, 132, 252, 0.2);
+            border-top: 1px solid rgba(192, 132, 252, 0.2);
+            border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+            padding: 24px;
+            margin: 28px 0;
+            border-radius: 0 12px 12px 0;
+            text-align: center;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .poem-content {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #f1f5f9;
+        }
+
+        .highlight-thesis {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 24px;
+        }
+
+        /* Phần Chú thích Footnotes */
+        .footnotes-section {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footnotes-title {
+            font-size: 1.1rem;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .footnotes-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footnotes-list li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            text-align: justify;
+        }
+
+        .footnotes-list li::before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nebula"></div>
+    <div class="container">
+        <h1>I. MỞ BÀI</h1>
+
+        <p>
+            Trong dòng chảy Thiền học Bát-nhã phương Đông, giải thoát chưa bao giờ được xem là một học thuyết triết lý trừu tượng hay một trạng thái siêu hình xa rời thực tại. Trái lại, giải thoát chính là một tiến trình chuyển hóa tâm lý - nhận thức luận vô cùng trực tiếp, đưa con người đi từ bóng tối chìm đắm trong cơn mê luân hồi đến sự bừng tỉnh tự tại hiện tiền. Kế thừa và cô đọng toàn bộ cốt tủy công phu Thiền học Trúc Lâm Yên Tử vào trong 8 câu thơ ngũ ngôn dung dị, Thiền sư Thích Thanh Từ qua bài kệ “Mộng” (sáng tác tại Thiền viện Chân Không, Bà Rịa - Vũng Tàu vào tháng 7 năm 1980) đã thiết lập một bản đồ tâm lý thức tỉnh hoàn chỉnh:
+        </p>
+
+        <div class="poem-box">
+            <div class="poem-content">
+                “Gá thân mộng<br>
+                Dạo cảnh mộng<br>
+                Mộng tan rồi<br>
+                Cười vỡ mộng<br>
+                Ghi lời mộng<br>
+                Nhắn khách mộng<br>
+                Biết được mộng<br>
+                Tỉnh cơn mộng.”
+            </div>
+        </div>
+
+        <p>
+            Toàn bộ bài kệ 8 câu không chỉ đơn thuần là một tác phẩm thiền ca giàu chất mỹ học hiện sinh, mà chính là một lộ trình vận hành tâm lý được cấu trúc theo 3 giai đoạn chuyển hóa nhận thức luận nghiêm ngặt:
+        </p>
+
+        <ul>
+            <li>
+                <strong>Giai đoạn 1 - Nhận diện Thực tại Huyễn mộng (2 câu đầu: “Gá thân mộng / Dạo cảnh mộng”):</strong> Hành giả khởi sự bằng việc thấu suốt bản chất Duyên khởi (Paṭiccasamuppāda) và Tánh Không (Śūnyatā) của Thân uẩn ngũ sinh và Cõi cảnh duyên trần; nhận ra Thân và Cảnh chỉ là sự gá mượn tạm thời, vắng bóng tự tánh hằng tồn (Anātman).
+            </li>
+            <li>
+                <strong>Giai đoạn 2 - Đột phá Ngộ nhập & Từ bi Giáo hóa (4 câu tiếp: “Mộng tan rồi / Cười vỡ mộng / Ghi lời mộng / Nhắn khách mộng”):</strong> Khoảnh khắc mộng niệm bám chấp tự sụp đổ ("Mộng tan rồi"), nụ cười Thiền giải thoát cất lên ("Cười vỡ mộng"), giải phóng hoàn toàn gánh nặng ngã chấp và pháp chấp. Từ trong trải nghiệm bừng tỉnh ấy, tâm từ bi tự nhiên tuôn chảy, biến chiếc cầu ngôn ngữ huyễn mộng (“Ghi lời mộng”) thành phương tiện Bồ-tát hạnh (Upāya) để quay lại nhắn gọi, thức tỉnh chúng sinh (“Nhắn khách mộng”).
+            </li>
+            <li>
+                <strong>Giai đoạn 3 - Trực giác Chân thật & Cứu cánh (2 câu cuối: “Biết được mộng / Tỉnh cơn mộng”):</strong> Đây là điểm tựa cứu cánh và chìa khóa vận hành toàn bộ bài kệ. Công phu Phản quang tự kỷ ("Biết vọng không theo") thắp sáng Tánh “Biết” chiếu soi ("Biết được mộng"), đưa tâm thức bừng tỉnh ngộ nhập Tánh chân thật bản hữu ("Tỉnh cơn mộng") ngay trong đời sống hiện tại.
+            </li>
+        </ul>
+
+        <p>
+            Nhìn sang truyền thống triết học Ấn Độ, tiến trình thức tỉnh nhận thức luận cũng được đại sư Śaṅkarācārya (788–820) của hệ thống Advaita Vedānta thiết lập qua 3 bước tu tập nghiêm ngặt dựa trên Thánh giáo Śruti: <strong>Śravaṇa</strong> (Lắng nghe chân lý từ Bậc Guru), <strong>Manana</strong> (Suy ngẫm biện chứng phủ định ảo ảnh Māyā qua Neti, Neti), và <strong>Nididhyāsana</strong> (Thiền định sâu thẳm trực nhận sự đồng nhất Aham Brahmāsmi).
+        </p>
+
+        <div class="highlight-thesis">
+            <p style="margin-bottom: 0;">
+                Do đó, bài tiểu luận này hướng đến việc làm sáng tỏ luận đề: Bài kệ “Mộng” của Thiền sư Thích Thanh Từ là một bản đồ chuyển hóa tâm lý thức tỉnh trọn vẹn từ mê đến ngộ. Qua sự đối chiếu với tiến trình nhận thức luận 3 bước (Śravaṇa – Manana – Nididhyāsana) của Advaita Vedānta, bài viết làm nổi bật bản sắc Thiền học Trúc Lâm Yên Tử: Nhận thức luận Thiền học phân định sắc nét ranh giới giữa Vô minh (Avidyā - nguyên nhân gốc ngầm rỉ Mūla-kāraṇa) và Điên đảo Vọng tưởng (Vipallāsa - quả sinh khởi Phala), tuyệt đối không đồng nhất hai khái niệm để tránh sai lầm Hữu quả luận (Sātkāryavāda); từ đó khẳng định bài kệ là một tác phẩm thiền ca đúc kết toàn bộ cốt tủy thực hành Thiền tông—nhẹ nhàng, trực tiếp, trao lại chìa khóa Tánh giác tự soi để con người tự tại dấn thân giải thoát ngay giữa cõi đời hiện tại [1, 2, 3, 4b].
+            </p>
+        </div>
+
+        <div class="footnotes-section">
+            <div class="footnotes-title">CHÚ THÍCH & TRÍCH DẪN NGUỒN (FOOTNOTES CHO PHẦN MỞ BÀI - SƯỜN BÀI 13)</div>
+            <ul class="footnotes-list">
+                <li data-number="1">Lê Xuân Khoa (1972), <em>Nhập môn Triết học Ấn Độ</em>, NXB Trung tâm Học liệu Bộ Giáo dục, Sài Gòn, tr. 185–192; đối chiếu bài giảng "1. Buổi 1 (18-01-2026).mp3" & "2. Buổi 2 (ngày 18-01-2026).mp3".</li>
+                <li data-number="2">Śaṅkarācārya, <em>Vivekacūḍāmaṇi</em> (Trí tuệ minh châu kim cương), Kārikā 31–45; đối chiếu bài giảng "2. Buổi 2 (ngày 18-01-2026).mp3" & "3. Buổi học ngày 21-9-2026.mp3" (Tóm lược tiến trình nhận thức luận 3 bước Śravaṇa, Manana, Nididhyāsana trong Advaita Vedānta).</li>
+                <li data-number="3">Śaṅkarācārya, <em>Brahmasūtra-bhāṣya</em> (Chú giải Kinh Brahma), Adhyāya 1, Pāda 1; xem thêm Swami Gambhirananda (dịch) (1965), <em>Brahma Sutra Bhasya of Shankaracharya</em>, Advaita Ashrama, Kolkata, tr. 14–22; đối chiếu bài giảng "2. Buổi 2 (ngày 18-01-2026).mp3" & "3. Buổi 3 (ngày 31-3-2026).mp3".</li>
+                <li data-number="4">Thiền sư Thích Thanh Từ (1980), Bài kệ "Mộng", khắc tại Thiền viện Chân Không, Bà Rịa - Vũng Tàu, sáng tác tháng 7/1980; đối chiếu bài giảng "3. Buổi học ngày 21-9-2026.mp3" & "3. Buổi 3 (ngày 31-3-2026).mp3".</li>
+                <li data-number="5">Thiền sư Thích Thanh Từ (1997), <em>Bí quyết tu thiền</em>, NXB Tôn Giáo, Hà Nội, tr. 35–48; đối chiếu bài giảng "1. Buổi 1 (18-01-2026).mp3".</li>
+                <li data-number="6">Thích Chơn Thiện (1999), <em>Pāli Phật học Đại cương</em>, NXB Tôn Giáo, Hà Nội, tr. 84–96; đối chiếu bài giảng "4b. Buổi học ngày 23-9-2026.mp3" & "3. Buổi 3 (ngày 31-3-2026).mp3" (Làm rõ sự phân định ranh giới giữa Vô minh Avidyā làm nhân gốc ngầm rỉ Mūla-kāraṇa và Điên đảo nhận thức Vipallāsa làm quả sinh khởi Phala, tránh sai lầm Sātkāryavāda).</li>
+                <li data-number="7">Thích Minh Châu (dịch) (2012), <em>Kinh Trung Bộ (Majjhima Nikāya)</em>, Kinh Tất Cả Lậu Hoặc (Sabbāsava Sutta, số 2), NXB Tôn Giáo, Hà Nội; đối chiếu bài giảng "3. Buổi 3 (ngày 31-3-2026).mp3".</li>
+                <li data-number="8">Radhakrishnan, S. (1999), <em>Indian Philosophy</em>, Vol. 2, Oxford University Press, New Delhi, tr. 480–485; đối chiếu bài giảng "2. Buổi học ngày 16-9-2026.mp3" & "3. Buổi 3 (ngày 31-3-2026).mp3".</li>
+                <li data-number="9">Viện Triết học (2004), <em>Lịch sử Triết học Phương Đông</em>, NXB Chính trị Quốc gia, Hà Nội, tr. 330–335; đối chiếu bài giảng "1. Buổi 1 (18-01-2026).mp3" & "3. Buổi học ngày 21-9-2026.mp3".</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

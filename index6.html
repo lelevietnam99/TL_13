@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHƯƠNG 4: SO SÁNH TIẾN TRÌNH NHẬN THỨC VEDĀNTA VỚI KỆ “MỘNG”</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Nền hiệu ứng sao vũ trụ */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #a5b4fc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #c084fc, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 180px 220px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 250px 120px, #38bdf8, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 320px 280px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 350px 350px;
+            opacity: 0.65;
+            z-index: 0;
+        }
+
+        /* Quầng sáng tinh vân (Nebula effect) */
+        .nebula {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.18) 0%, rgba(59, 130, 246, 0.12) 40%, rgba(0, 0, 0, 0) 70%);
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Khung kính mờ Glassmorphism */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 950px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(168, 85, 247, 0.15);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #c084fc;
+            text-align: center;
+            margin-bottom: 36px;
+            text-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+            border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+            padding-bottom: 20px;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #38bdf8;
+            margin-top: 36px;
+            margin-bottom: 20px;
+            border-left: 4px solid #38bdf8;
+            padding-left: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            color: #f1f5f9;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-align: justify;
+            color: #cbd5e1;
+        }
+
+        ul {
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        li {
+            line-height: 1.7;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+
+        /* Sơ đồ tiến trình / Cơ chế */
+        .diagram-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 28px 0;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .diagram-title {
+            text-align: center;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .diagram-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(192, 132, 252, 0.25);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .diagram-box-title {
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .diagram-box-sub {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Bảng so sánh */
+        .table-container {
+            overflow-x: auto;
+            margin: 32px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(30, 41, 59, 0.9);
+            color: #38bdf8;
+            padding: 16px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            vertical-align: top;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        tr:hover {
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        /* Phần Chú thích Footnotes */
+        .footnotes-section {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footnotes-title {
+            font-size: 1.1rem;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .footnotes-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footnotes-list li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            padding-left: 32px;
+            position: relative;
+            text-align: justify;
+        }
+
+        .footnotes-list li::before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px;
+            }
+            .diagram-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nebula"></div>
+    <div class="container">
+        <h1>CHƯƠNG 4: SO SÁNH TIẾN TRÌNH NHẬN THỨC VEDĀNTA (ŚRAVAṄA – MANANA – NIDIDHYĀSANA) VỚI DIỄN TIẾN TÂM LÝ BÀI KỆ “MỘNG”</h1>
+
+        <!-- 4.1 -->
+        <h2>4.1. Tiến Trình Nhận Thức Luận 3 Bước Trong Advaita Vedānta Của Śaṅkarācārya</h2>
+        <p>
+            Trong tòa nhà triết học Advaita Vedānta (Nhất nguyên vô biệt), để giải phóng tâm thức cá thể (Jīva) khỏi bóng tối Vô minh (Avidyā) và ảo ảnh Māyā, đại sư Śaṅkarācārya đã thiết lập một quy trình nhận thức luận Bất nhị dựa trên Thánh giáo Śruti gồm ba giai đoạn tu tập nghiêm ngặt: Śravaṇa (Thánh lắng nghe), Manana (Thẩm thấu tư duy) và Nididhyāsana (Thiền định trực nhận) [21].
+        </p>
+
+        <!-- Sơ đồ Tiến trình nhận thức 3 bước Vedānta -->
+        <div class="diagram-card">
+            <div class="diagram-title">TIẾN TRÌNH NHẬN THỨC LUẬN 3 BƯỚC TRONG ADVAITA VEDĀNTA</div>
+            <div class="diagram-grid">
+                <div class="diagram-box">
+                    <div class="diagram-box-title">1. ŚRAVAṄA (Lắng nghe Thánh giáo)</div>
+                    <p class="diagram-box-sub">➔ Tiếp nhận Tri thức Chân lý từ Bậc Guru.</p>
+                </div>
+                <div class="diagram-box">
+                    <div class="diagram-box-title">2. MANANA (Suy ngẫm biện chứng)</div>
+                    <p class="diagram-box-sub">➔ Bóc tách Adhyāsa/Māyā bằng lý trí Neti, Neti.</p>
+                </div>
+            </div>
+            <div class="diagram-box" style="margin-top: 16px;">
+                <div class="diagram-box-title">3. NIDIDHYĀSANA (Thiền định trực nhận)</div>
+                <p class="diagram-box-sub">➔ Trực nhận đồng nhất Bất nhị "Aham Brahmāsmi".</p>
+            </div>
+        </div>
+
+        <h3>a. Giai đoạn 1: Śravaṇa (Thánh lắng nghe lời dạy chân lý)</h3>
+        <p>
+            <strong>Tiếp nhận Tri thức Chân lý (Pramāṇa):</strong> Hành giả khởi đầu hành trình tâm linh bằng việc lắng nghe, tiếp nhận những lời khai thị Bất nhị từ Bậc Thầy tâm linh (Guru) và các văn bản Thánh giáo Upanishad [21].
+        </p>
+        <p>
+            <strong>Xác lập định hướng nhận thức:</strong> Śravaṇa giúp hành giả lần đầu tiên nhận ra sự tồn tại của Thực tại Tối hậu Nirguṇa Brahman và bản chất huyễn giả (Mithyā) của cõi hiện tượng Jagat.
+        </p>
+
+        <h3>b. Giai đoạn 2: Manana (Tư duy biện chứng bóc tách hoài nghi)</h3>
+        <p>
+            <strong>Sử dụng lý trí Bát-nhã/Phủ định (Neti, Neti):</strong> Sau khi lắng nghe, hành giả vận dụng tư duy biện chứng sắc bén (Manana) để mổ xẻ, truy vấn và đập tan mọi hoài nghi tâm lý [21].
+        </p>
+        <p>
+            <strong>Bóc tách cơ chế Cưỡng gán (Adhyāsa):</strong> Bằng phương pháp phủ định bóc tách Neti, Neti ("Không phải cái này, Không phải cái kia"), hành giả cởi bỏ 5 lớp vỏ giả tạm che đậy (Pañca-kośa), nhận diện con rắn ảo giác Māyā chỉ là sự gán tưởng lên sợi dây thừng Bản thể (Rajju-sarpa) [21].
+        </p>
+
+        <h3>c. Giai đoạn 3: Nididhyāsana (Thiền định sâu thẳm ngộ nhập Bất nhị)</h3>
+        <p>
+            <strong>Hợp nhất Nhận thức và Bản thể:</strong> Nididhyāsana là đỉnh cao của tiến trình nhận thức luận Vedānta. Hành giả nhập vào dòng thiền định liên tục, đưa nhận thức vượt lên trên mọi khái niệm ngôn từ và suy luận lý trí [21].
+        </p>
+        <p>
+            <strong>Trải nghiệm ngộ nhập Mokṣa:</strong> Khoảnh khắc Nididhyāsana thuần thục, ranh giới phân biệt nhị nguyên giữa Chủ thể và Đối tượng bị xóa bỏ hoàn toàn. Hành giả trực nhận sự đồng nhất tuyệt đối: <em>Aham Brahmāsmi</em> ("Ta chính là Brahman"), đạt trạng thái Giải thoát đương sinh (Jīvanmukta) [21].
+        </p>
+
+        <!-- 4.2 -->
+        <h2>4.2. Sự Đối Sáng Tương Ứng Với 3 Giai Đoạn Diễn Tiến Tâm Lý Bài Kệ “Mộng”</h2>
+        <p>
+            Đặt hai hệ thống nhận thức luận lên bàn cân đối sánh, chúng ta nhận thấy sự tương thích mỹ học và hiện tượng luận vô cùng thú vị giữa 3 bước tu tập Vedānta và 3 giai đoạn chuyển hóa tâm lý qua 8 câu kệ “Mộng” của Thiền sư Thích Thanh Từ [23, 24]:
+        </p>
+
+        <!-- Sơ đồ Đối sáng tiến trình -->
+        <div class="diagram-card">
+            <div class="diagram-title">ĐỐI SÁNG TIẾN TRÌNH NHẬN THỨC VEDĀNTA VÀ BÀI KỆ "MỘNG"</div>
+            <div class="diagram-grid">
+                <div class="diagram-box">
+                    <div class="diagram-box-title">ADVAITA VEDĀNTA</div>
+                    <p class="diagram-box-sub">
+                        • 1. Śravaṇa (Nghe khai thị)<br>
+                        • 2. Manana (Tư duy bóc tách)<br>
+                        • 3. Nididhyāsana (Thiền định)
+                    </p>
+                </div>
+                <div class="diagram-box">
+                    <div class="diagram-box-title">THIỀN HỌC THÍCH THANH TỪ (KỆ "MỘNG")</div>
+                    <p class="diagram-box-sub">
+                        • Giai đoạn 1: "Gá thân mộng / Dạo cảnh mộng" (Quán Duyên khởi)<br>
+                        • Giai đoạn 2: "Mộng tan / Cười vỡ / Ghi lời / Nhắn khách" (Xóa chấp)<br>
+                        • Giai đoạn 3: "Biết được mộng / Tỉnh cơn mộng" (Chiếu soi Tánh giác)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <strong>Giai đoạn 1 tương ứng với Śravaṇa – Nhận diện Thực tại Duyên mộng (“Gá thân mộng / Dạo cảnh mộng”):</strong> Giống như bước Śravaṇa tiếp nhận chân lý về cõi huyễn Māyā, hai câu đầu bài kệ giúp hành giả nhận diện đúng như thật (Yathābhūta) bản chất của Thân ngũ uẩn và Cảnh duyên trần [24]. Thân chỉ là sự gá mượn Tứ đại ("Gá thân mộng"), Cảnh chỉ là sự sinh diệt do Duyên khởi ("Dạo cảnh mộng"), hoàn toàn vắng bóng tự tánh cố định (Anātman / Śūnyatā) [21, 24].
+        </p>
+        <p>
+            <strong>Giai đoạn 2 tương ứng với Manana – Đột phá ngộ nhập & Dấn thân phương tiện (4 câu giữa):</strong> Giống như bước Manana sử dụng tư duy biện chứng Neti Neti để đập tan con rắn ảo giác Māyā, công phu Phản quang tự kỷ cắt đứt dòng chảy vọng niệm, làm mộng niệm bám chấp tự sụp đổ ("Mộng tan rồi"), cất lên nụ cười sảng khoái đập tan ngã chấp và pháp chấp ("Cười vỡ mộng") [23, 24]. Từ sự bừng tỉnh đó, tâm từ bi mở ra chiều kích dấn thân Bồ-tát hạnh: mượn thứ ngôn ngữ huyễn mộng (“Ghi lời mộng”) làm chiếc cầu phương tiện (Upāya) để quay lại cất tiếng gọi thức tỉnh người còn trong mê (“Nhắn khách mộng”) với tâm hoàn toàn Vô sở trụ [21, 23, 24].
+        </p>
+        <p>
+            <strong>Giai đoạn 3 tương ứng với Nididhyāsana – Trực giác Tánh giác cứu cánh (2 câu cuối):</strong> Giống như bước Nididhyāsana trực nhận Bản thể Bất nhị Aham Brahmāsmi, hai câu cuối bài kệ thắp sáng Tánh “Biết” chiếu soi ("Biết được mộng"), đưa tâm thức bừng tỉnh ngộ nhập Tánh giác bản hữu ("Tỉnh cơn mộng")—sống tự tại, thong dong ngay giữa cõi đời hiện tại [21, 23, 24].
+        </p>
+
+        <!-- 4.3 -->
+        <h2>4.3. Điểm Phân Ngả Triết Học Cốt Tủy Giữa Nhận Thức Luận Thiền Học Và Advaita Vedānta</h2>
+        <p>
+            Mặc dù có sự tương đồng về tiến trình chuyển hóa tâm lý từ mê đến ngộ, ranh giới bản thể luận và nhận thức luận giữa Thiền học Thích Thanh Từ và Advaita Vedānta lại phân ngả vô cùng sắc nét [21, 22, 23, 24]:
+        </p>
+
+        <!-- Sơ đồ Ranh giới Bản thể luận & Thái độ Nhập thế -->
+        <div class="diagram-card">
+            <div class="diagram-title">RANH GIỚI BẢN THỂ VÀ THÁI ĐỘ NHẬP THẾ GIỮA HAI HỆ THỐNG</div>
+            <div class="diagram-grid">
+                <div class="diagram-box">
+                    <div class="diagram-box-title">ADVAITA VEDĀNTA (Śaṅkarācārya)</div>
+                    <p class="diagram-box-sub">[Bản thể Tối hậu] ──► Nirguṇa Brahman (Đại ngã Bất nhị duy nhất / Aham Brahmāsmi).<br>[Thái độ Nhập thế] ──► Sākṣin (Chứng nhân tịch tịnh), coi cõi đời là trò kịch Līlā.</p>
+                </div>
+                <div class="diagram-box">
+                    <div class="diagram-box-title">THIỀN HỌC THÍCH THANH TỪ (Bát-nhã)</div>
+                    <p class="diagram-box-sub">[Bản thể Tối hậu] ──► Tánh Không Duyên khởi (Śūnyatā), Vô ngã bản hữu (Anātman).<br>[Thái độ Nhập thế] ──► Bồ-tát hạnh "Vô sở trụ", dấn thân "Ghi lời mộng, Nhắn khách mộng".</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>a. Lập trường Bản thể luận: Đại ngã Bất nhị đối sáng với Tánh Không Vô ngã</h3>
+        <p>
+            <strong>Advaita Vedānta:</strong> Mục tiêu tối hậu của 3 bước nhận thức (Śravaṇa – Manana – Nididhyāsana) là đưa linh hồn cá nhân (Jīva) trở về hòa nhập trọn vẹn vào Đại ngã siêu hình (Nirguṇa Brahman) qua mệnh đề "Aham Brahmāsmi", coi cõi thế gian chỉ là trò tiêu khiển Līlā [21].
+        </p>
+        <p>
+            <strong>Thiền học Thích Thanh Từ:</strong> Đứng vững trên tinh thần Tánh Không (Śūnyatā) và Vô ngã (Anātman) của Phật giáo Đại thừa [23, 24]. Tánh giác chiếu soi không phải là một "Đại ngã" đứng ngoài cõi đời, mà là năng lực nhận diện rỗng rang, thấu suốt vạn pháp do Duyên khởi [21, 23, 24].
+        </p>
+
+        <h3>b. Cấu trúc Nhận thức luận Nhân - Quả: Phân định sắc nét Avidyā và Vipallāsa</h3>
+        <p>
+            Nhận thức luận Thiền học phân định ranh giới Nhân - Quả nghiêm ngặt để bảo vệ tính thuần khiết của Bát-nhã [22]:
+        </p>
+        <p>
+            <strong>Vô minh (Avidyā):</strong> Là Mūla-kāraṇa—nguyên nhân gốc rễ ngầm rỉ che lấp Tuệ giác [22].
+        </p>
+        <p>
+            <strong>Điên đảo Vọng tưởng (Vipallāsa):</strong> Là Phala—kết quả sinh khởi trực tiếp (ngã chấp và pháp chấp) [22].
+        </p>
+        <p>
+            <strong>Tránh sai lầm Hữu quả luận (Sātkāryavāda):</strong> Chú giải Nettipakaraṇa chỉ rõ: Nếu đồng nhất Vô minh và Điên đảo vọng tưởng làm một (như Vedānta hay Sāṃkhya), hệ thống sẽ rơi vào sai lầm Hữu quả luận (Sātkāryavāda)—coi "quả đã tiềm ẩn sẵn trong nhân" [22]. Thiền sư Thích Thanh Từ giữ vững sự phân định này: Công phu "Biết vọng không theo" (Phản quang tự kỷ) can thiệp trực tiếp làm vỡ tan quả Vipallāsa, từ đó diệt tận gốc rễ nhân Avidyā [21, 22, 24].
+        </p>
+
+        <h3>c. Thái độ Nhập thế: Tịch tịnh Chứng nhân (Sākṣin) đối sáng với Bồ-tát Hạnh "Vô sở trụ"</h3>
+        <p>
+            <strong>Vedānta:</strong> Giữ thái độ Sākṣin (chứng nhân tịch tịnh) thụ động đứng ngoài cõi đời [21].
+        </p>
+        <p>
+            <strong>Thiền học Việt Nam:</strong> Thể hiện chiều kích Bồ-tát hạnh dấn thân vô sở trụ (“Ghi lời mộng, Nhắn khách mộng”) [23, 24]. Bậc ngộ đạo mượn chiếc "thuyền mộng qua sông mộng", phụng sự chúng sinh hết lòng nhưng giữ tâm hoàn toàn Vô sở trụ (theo Kinh Kim Cang)—tự tại cất lên nụ cười "Cười vỡ mộng" ngay giữa lòng cõi thực [21, 23, 24].
+        </p>
+
+        <!-- 4.4 Bảng So Sánh Bổ Khuyết -->
+        <h2>4.4. Bảng So Sánh Bổ Khuyết Tiến Trình Nhận Thức Luận Giữa Hai Hệ Thống</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiêu chí Nhận thức</th>
+                        <th>Advaita Vedānta (Śaṅkarācārya)</th>
+                        <th>Thiền học Thích Thanh Từ (Kệ "Mộng")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tiến trình Lập quy</strong></td>
+                        <td>3 bước: Śravaṇa ➔ Manana ➔ Nididhyāsana [21].</td>
+                        <td>3 giai đoạn: Quán Duyên mộng ➔ Xóa chấp từ bi ➔ Trực nhận Tánh giác [24].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bản chất Thức tỉnh</strong></td>
+                        <td>Trực nhận sự đồng nhất Chân ngã với Đại ngã (Aham Brahmāsmi) [21].</td>
+                        <td>Trực nhận Tánh giác bản hữu, thấu suốt Tánh Không Vô ngã (Anātman) [23, 24].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cấu trúc Nhân - Quả</strong></td>
+                        <td>Đồng nhất Vô minh và Ảo ảnh dưới lăng kính Māyā [21].</td>
+                        <td>Phân định Avidyā (Nhân gốc) và Vipallāsa (Quả), tránh Sātkāryavāda [22].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phương thức Tu tập</strong></td>
+                        <td>Bóc tách năm lớp vỏ Pañca-kośa bằng Neti, Neti [21].</td>
+                        <td>Phản quang tự kỷ: “Biết được mộng” (Thấy vọng không theo) [23, 24].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thái độ Hiện sinh</strong></td>
+                        <td>Tịch tịnh chứng nhân (Sākṣin), đứng ngoài cõi Līlā [21].</td>
+                        <td>"Dạo cảnh mộng", dấn thân Bồ-tát hạnh "Ghi lời, Nhắn khách" [23, 24].</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footnotes -->
+        <div class="footnotes-section">
+            <div class="footnotes-title">CHÚ THÍCH & TRÍCH DẪN NGUỒN (FOOTNOTES CHO CHƯƠNG 4 - SƯỜN BÀI 13)</div>
+            <ul class="footnotes-list">
+                <li data-number="21">Śaṅkarācārya, <em>Vivekacūḍāmaṇi</em>, Kārikā 31–45; đối chiếu bài giảng "2. Buổi 2 (ngày 18-01-2026).mp3" & "3. Buổi học ngày 21-9-2026.mp3" (Tóm lược tiến trình nhận thức luận 3 bước Śravaṇa, Manana, Nididhyāsana trong Advaita Vedānta).</li>
+                <li data-number="22">Thích Chơn Thiện (1999), <em>Pāli Phật học Đại cương</em>, NXB Tôn Giáo, Hà Nội, tr. 84–96; đối chiếu bài giảng "4b. Buổi học ngày 23-9-2026.mp3" & "3. Buổi 3 (ngày 31-3-2026).mp3" (Phân định ranh giới giữa Vô minh Avidyā làm nhân gốc ngầm rỉ Mūla-kāraṇa và Điên đảo vọng tưởng Vipallāsa làm quả sinh khởi Phala; phê bình việc đồng nhất hai khái niệm dẫn đến Hữu quả luận Sātkāryavāda).</li>
+                <li data-number="23">Thiền sư Thích Thanh Từ (2005), <em>Thiền sư Việt Nam</em>, NXB Tôn Giáo, Hà Nội, tr. 120–125; đối chiếu bài giảng "3. Buổi học ngày 21-9-2026.mp3" (Bản sắc Thiền Trúc Lâm Yên Tử và ý nghĩa Bồ-tát hạnh dấn thân "Ghi lời mộng, Nhắn khách mộng").</li>
+                <li data-number="24">Viện Triết học (2004), <em>Lịch sử Triết học Phương Đông</em>, NXB Chính trị Quốc gia, Hà Nội, tr. 335–340; đối chiếu bài giảng "1. Buổi 1 (18-01-2026).mp3" & "2. Buổi học ngày 16-9-2026.mp3" (So sánh tiến trình nhận thức Bất nhị Vedānta và công phu Phản quang tự kỷ Thiền học).</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 
